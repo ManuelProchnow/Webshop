@@ -1,0 +1,751 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	display: grid;
+	grid-template-columns:1fr 1fr 1fr;			/* Der body ist in 3 Reihen eingeteilt.		1. Reihe: header 	2. Reihe: main-Teil 	3. Reihe: footer ;*/
+	grid-template-rows: 70px 1fr 70px;
+	height: 100%;
+	margin: 0;
+}
+
+nav {
+	grid-column: 1/5;
+	grid-row: 1/2;
+	display: grid;
+	grid-template-columns: 1fr 30em 1fr;					/* 3teiliges GRID innerhalb nav bar */
+	grid-template-rows: 1fr;
+	background-color: black;
+	width: 100%;
+    align-items: center;       						/* der Inhalt der Grids ist vertikal und horizontal zentriert */
+    justify-content: center;   
+	position: sticky;
+	top: 0;
+}
+
+#titel{
+	background-color: #272727;
+	color:white;
+	text-decoration: none;
+	padding: 1em;
+	border: solid 4px pink;
+	margin-left:1em;
+	box-shadow:0.2em 0.2em 10px black;
+	transition: 0.5s ease;						/* wesentliche Änderungen von dem Element haben eine Transition von einer halben Sekunde*/
+	font-family: 'Source Code Pro', monospace;
+}	
+#titel:hover{									/* Wenn man über das Element links in der nav-bar hovert, wird es größer und die border-color*/
+	padding:1.1em;								/* ändert sich von pink zu hellblau. */
+	border: solid 5px lightblue;
+	color: white;
+	background-color:#272727;
+	margin-left: 0.9em;							/* das Element hat Abstand zum linken Rand*/
+}
+
+ul {
+	display: flex;								/* die Liste ist räumlich veränderbar und Elemente werden untereinander gelistet*/
+	background-color: transparent;
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
+	grid-column: 2/3;
+	grid-row: 1/2;
+	justify-content: center;
+	align-items: center;
+}
+
+li {
+	color:#fff;
+	background-color: #000000;
+	display:block;						
+	text-decoration: none;
+	font-family: 'Inconsolata', monospace;
+	
+	
+}
+
+li a {
+	color:white;						/* die herkömmlichen Dinge wie, dass die Links automatisch */
+	padding: 1rem;						/* unterstrichen werden und Lila sind werden überschrieben */
+	text-decoration: none;
+	font-family: 'Inconsolata', monospace;
+}
+li a:hover,
+li a:focus{
+	background-color:dimgray;			/* wenn man über die Navelemente hovert oder sie anklickt werden sie Rund und werden grau*/
+	border-radius: 14px;
+	transition-duration: 0.5s;
+}
+
+.dropdown {
+	background-color: black;
+	visibility: Hidden;
+	opacity: 0;
+	min-width: 5rem;
+	transition: all 0.5s ease;
+	margin-top:1rem;
+	position: absolute;					/* das Dropdown-Element wird unmittelbar bei dem angeklickten Element angezeigt */
+	display: none; 						/* margin: 1rem; zeigt das Element weiter unten an*/
+	z-index:1;							
+	border-radius: 14px;				/* das Dropdown-Element überlappt andere Elemente auf der Seite, da es mit dem z-index*/
+	box-shadow:0px 0px;					/* als wichtiger interpretiert */
+	
+}
+
+ul li:hover > ul,
+ul li:focus-within > ul,
+ul li ul:hover,
+ul li ul:focus {						/* wenn über das element "weird stuff" gehovert wird, wird das Dropdown-Element sichtbar*/
+	 
+	visibility: visible;
+	opacity: 1;
+	display: block;
+	align-items: center;
+	box-shadow:0.2em 0.2em 10px black;
+}
+
+ul li ul li {
+	clear: both;
+	width: 100%;
+	border-radius: 14px;
+	
+}
+ul li ul li a{
+	color:#fff;
+	background-color:black;
+	display: block;
+	position: relative; 	
+	text-decoration: none;
+	transition-duration: 0.5s;
+	text-align: center;
+	padding:1rem;
+	margin: 4px;
+	
+}
+ul li ul li a:hover{
+	color: pink;
+	background-color: dimgray;
+}
+
+.search_bar{
+	display: inline;
+	grid-column: 3/4;
+	grid-row: 1/2;
+}
+#search{							
+	width: 8em;
+	padding: 0.5em 1em;
+	background-color: white;
+	border: solid 1px black;
+	border-radius: 14px;
+	transition:0.8s;
+	font-family: 'Source Code Pro', monospace;
+}
+#search:focus{						/* wenn man in die Search-bar klickt, wird sie mit einer Transition länger und sie wird eckiger*/
+	width: 16em;
+	border-radius: 7px;
+}
+
+#searchdiv{							/* Element; deutet Funktion an, Suche zu starten (stilistisch)*/
+	color:black;
+	background-color:pink;
+	width: 1em;
+	height: 1em;
+	border-radius: 25px;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;			/* wenn man über das Element hovert, wird der Zeiger verändert; interargierbarkeit wird angedeutet*/
+	align-content: center;
+}
+#menu_nav_sp{					/* das Element ist ausgeblendet, weil es erst bei kleinerer Handyansicht zur Verwendung kommt*/
+	display:inline;
+	opacity: 0%;
+}
+
+
+main{
+	grid-column:1/5;
+	grid-row: 2/3;
+	background-color:white;
+	display: grid;
+	grid-template-columns: 1fr 150px 1fr;
+	grid-template-rows: 1fr 1fr;
+}
+
+#Produktbild{							/* HAUPTBILD */
+	grid-column:1/2;
+	grid-row: 1/2;
+	display: block;
+	border: solid 1px black;
+	border-radius:10px;
+	margin: 1em;
+	margin-left: auto;
+	margin-right: 1em;					/* das Produktbild liegt an dem Grid rechts daneben mit einem gewissen Abstand an*/
+}
+
+img#Produktbild {						/* da das Bild in voller Größe zu groß angezeigt wird, wird dessen größe mit einer nicht-pixelbasierten */
+	max-width:95%;						/* Größenangabe verkleinert.*/
+	max-height: 80vh;					
+}
+
+.Previews{								/* GRID FÜR DIE VORSCHAUBILDER */
+	grid-column: 2/3;
+	grid-row: 1/2;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr 3fr 3fr 3fr 1fr;
+	grid-gap: 0.5em;
+	margin: 1em 0;
+	max-width: 100%;
+}
+#minpic_1{
+	grid-column: 1/2;
+	grid-row: 2/3;
+	width: 150px;
+	height: 150px;
+	border: solid 1px black;
+	border-radius: 5px;
+	
+}
+#minpic_1:hover{				/*wenn man über die Vorschaubilder hovert, werden sie leicht durchsichtiger*/
+	opacity: 80%;
+	
+}
+#minpic_2{
+	grid-column: 1/2;
+	grid-row: 3/4;
+	width: 150px;
+	height: 150px;
+	border: solid 1px black;
+	border-radius: 5px;
+}
+#minpic_2:hover{
+	opacity: 80%;
+	
+}
+
+#minpic_3{
+	grid-column: 1/2;
+	grid-row: 4/5;
+	width: 150px;
+	height: 150px;
+	border: solid 1px black;
+	border-radius: 5px;
+}
+#minpic_3:hover{
+	opacity: 80%;
+	
+}
+
+.description{								/* DIE PRODUKTBESCHREIBUNG*/
+	grid-column: 2/3;
+	grid-row: 2/3;
+	background-color:#D6D6D6;
+	border: solid 1px #585858;
+	border-left: solid 3px black;
+	border-radius: 5px;
+	padding: 2em;
+	min-width: 381.67px;
+}
+
+.description_grid{							/* die Produktbeschreibung ist in dieses Grid gelegt */
+	display: grid;
+	grid-template-columns: 1fr 5fr 2fr;
+	grid-template-rows: 1fr 5fr 1fr;
+	grid-column: 3/4;
+	grid-row: 1/2;
+}
+h1 {
+	font-family: 'Inconsolata', monospace;
+}
+
+#Produktart{						/* kleines Kästchen mit der Produktart unter dem Produktnamen */
+	display: inline;
+	background-color:#DE9FDF;
+	padding: 5px;
+	border-radius:10px;
+	border:solid 1px black;
+	color: black;
+	text-decoration:none;
+	font-family: 'Inconsolata', monospace; 
+}
+#Produktart:hover{
+	background-color:#E2AAE4;
+}
+
+
+p{
+	font-family: 'Source Code Pro', monospace;
+}
+
+/*Auswahlskästchen*/
+#Kleidergröße{
+	border: solid 1px black;
+	padding:0.5em 1em;
+	background-color:white;
+	margin:0px 0px 1.5em 1em;
+	border-radius: 10px;
+	font-family: 'Source Code Pro', monospace;
+}
+#Kleidergröße:focus{
+	outline: none;
+	border-radius: 10px;
+}
+
+/* Schriftzug "size" */
+#größe{		
+	display: inline;
+	font-family: 'Inconsolata', monospace;
+}
+
+#Farbe_weiß {								/* Kreis für die Farbauswahl*/
+	border: solid 1px black;
+	border-radius: 25px;
+	background-color: white;
+	margin-bottom: 0px;
+	color: white;
+	width:1.5em;
+	height: 1.5em;
+	display: inline-block;
+	margin-top:1em;
+}
+#Farbe_weiß:hover{
+	cursor: pointer;						/* Curser verändert sich beim hovern*/
+}
+#Farbe_schwarz{
+	border: solid 1px black;
+	border-radius: 25px;
+	background-color: black;
+	margin-bottom: 0px;
+	width:1.5em;
+	height: 1.5em;
+	display: inline-block;
+	margin-top:1em;
+}
+#Farbe_schwarz:hover{
+	cursor: pointer;
+}
+
+#Farbe_dimgray{
+	border: solid 1px black;
+	border-radius: 25px;
+	background-color: dimgray;
+	margin-bottom:0px;
+	width:1.5em;
+	height: 1.5em;
+	display: inline-block;
+	margin-top:1em;
+}
+#Farbe_dimgray:hover{
+	cursor: pointer;
+}
+
+#Farbe_darkred{
+	border: solid 1px black;
+	border-radius: 25px;
+	background-color: darkred;
+	margin-bottom: 0px;
+	width:1.5em;
+	height: 1.5em;
+	display: inline-block;
+	margin-top:1em;
+}
+#Farbe_darkred:hover{
+	cursor: pointer;
+}
+
+/*Gruppe der Farbicons*/
+.Farbe{						
+	display:inline;
+}
+
+/*"color"-text*/
+#Farbe{
+	display: inline;
+	font-family: 'Inconsolata', monospace;
+}
+/*"quantity"-text*/
+#anzahl{
+	display: inline;
+	font-family: 'Inconsolata', monospace;
+}
+										/* durch klicken wird die Anzahl kleiner und der Preis verändert sich daraufhin*/
+#reduce_quant{
+	border-radius: 14px;
+	border: solid 1px black;
+	background-color: #FFF;
+}
+#reduce_quant:hover{
+	background-color:#E2AAE4;
+	cursor: pointer;
+}
+
+#add_quant{								/* durch klicken wird die Anzahl größer und der Preis verändert sich daraufhin*/
+	border-radius: 14px;
+	border: solid 1px black;
+	
+}
+#add_quant:hover{
+	background-color:#E2AAE4;
+	cursor: pointer;
+}
+
+#value_quant{							/* ANZAHL DER PRODUKTE*/
+	background-color: #D6D6D6;
+	border:0px;
+	text-align: center;
+	width:3em;
+	appearance:none;
+}
+#value_quant::-webkit-inner-spin-button, 
+#value_quant::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 				/* störende User-Eingabeobjekte werden ausgeblendet */
+  margin: 0; 
+}
+
+
+#value_quant:focus{
+	border: 0px;
+	background-color: white;
+	outline: 1px solid black;
+	border-radius: 14px;
+}
+
+#quantity_div{
+	margin-top: 1em;
+	cursor: default;
+}
+
+#prize{										/* der berechnete Preis des Produktes wird hier angezeigt */
+	border: 0px;
+	background-color: #D6D6D6;
+	border-left:2px solid #3B3B3B;
+	color:green;
+	font-size: 24px;
+	
+}
+
+#Kaufbutton{									/* KAUFBUTTON */
+	padding: 10px 30px;
+	background-color: #DE9FDF;
+	color:black;
+	border:solid 1px black;
+	border-radius: 16px;
+	text-decoration:none;
+	font-size:16px;
+	font-family: 'Inconsolata', monospace;
+}
+#Kaufbutton:hover{
+	background-color: #E2AAE4;
+	color:black;
+	border:solid 1px black;
+}
+#Kaufdiv{
+	margin-top:1em;
+}
+
+#lower_website_div{						/* der untere Teil der Website*/
+	grid-column: 1/4;
+	grid-row: 2/3;
+	background-color: white;
+	grid-template-columns: 1fr 8fr 1fr;
+	grid-template-rows:  1fr 2em;
+}
+#description_low{
+	grid-column: 2/3;
+	grid-row: 2/3;
+}
+
+#description_list{						/* blaue Box um die Beschreibungs-tags*/
+	background-color: lightblue;
+	padding: 0.33em 0em;
+	border: 2px solid black;
+	border-left: 0px;
+	border-right: 0px;
+}
+
+.list{									/* einzelne Beschreibungs-tags*/	
+	background-color: white;
+	color: black;
+	padding: 0em 1em;
+	margin: 0em 0.33em;
+	border: 1px solid black;
+	border-radius: 14px;
+	font-family: 'Source Code Pro', monospace;
+}
+
+
+footer{									/* FOOTER */
+	grid-column: 1/4;
+	grid-row: 3/4;
+	display: inline-block;
+	padding: 1em;
+	background-color:black;
+
+}
+.footer_content{					/* weiße Schrift in dem Footer */
+	color: white;
+	text-decoration: none;
+	padding:1em 0.25em;
+	border-radius: 14px;
+	transition: 0.5s;
+	margin-top: 1em;
+}
+.footer_content:hover{
+	color: pink;
+	background-color: dimgray;
+}
+
+
+@media screen and (max-width:1444px){							/* wenn die Anzeigebreite 1444px unterschreitet wird die Seite */
+	.description_grid{											/* mit den folgenden Eigenschaften überschrieben: */
+		display: grid;
+		grid-template-columns: 1fr 381.67px 2fr;
+		grid-template-rows: 1fr 5fr 1fr;
+		grid-column: 3/4;
+		grid-row: 1/2;
+	}
+}
+
+
+@media screen and (max-width:1432px){							/* wenn die Anzeigebreite 1432px unterschreitet wird die Seite */
+	#Produktbild{												/* mit den folgenden Eigenschaften überschrieben: */
+		margin-left: 1em;
+	}
+}
+
+@media screen and (max-width:1290px){							/* wenn die Anzeigebreite 1290px unterschreitet wird die Seite */
+	main{														/* mit den folgenden Eigenschaften überschrieben: */
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 200px 1fr;					
+	}
+	#Produktbild{
+		grid-column: 1/2;
+		grid-row: 1/2;
+	}
+	.description_grid{
+		grid-column: 2/3;
+		grid-row: 1/2;
+	}
+	.Previews{
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-rows: 1fr;
+		grid-gap: 0em 1em;
+		justify-items: center;
+		align-items:flex-start;
+		grid-column: 1/2;
+		grid-row: 2/3;
+		margin-left:1em;
+		
+	}
+	#minpic_1{
+		grid-column: 1/2;
+		grid-row: 1/2;
+	}
+	#minpic_2{
+		grid-column: 2/3;
+		grid-row: 1/2;
+	}
+	#minpic_3{
+		grid-column: 3/4;
+		grid-row: 1/2;
+	}
+	
+	#lower_website_div{
+		grid-column: 1/3;
+		grid-row: 3/4;
+	}
+}																/* wenn die Anzeigebreite 1000px unterschreitet wird die Seite */
+@media screen and (max-width:1000px){							/* mit den folgenden Eigenschaften überschrieben: */
+	nav{
+		display: grid;
+		grid-template-columns: 1fr 25em 1fr;
+		grid-template-rows: 1fr;
+	}
+	
+	main{
+		display: grid;
+		grid-template-columns: 0.5fr 1fr 0.5fr;
+		grid-template-rows: 1fr 1fr 200px 1fr;
+		justify-content: center;
+		align-content: center;
+	}
+	
+	.description_grid{
+		grid-column: 2/3;
+		grid-row: 1/2;
+		display: grid;
+		grid-template-columns: 1fr 5fr 2fr;
+		grid-template-rows: 0.5fr 5fr;
+		
+	}
+	
+	.description{
+		grid-column: 1/4;
+		grid-row: 2/3;
+		border: solid 1px black;
+		border-bottom: 3px solid black;
+	}
+	
+	#Produktbild{
+		grid-column: 2/3;
+		grid-row: 2/3;
+		margin-top: 2em;
+		margin-left: 0em;
+		margin-right: 0em;
+	}
+	
+	#lower_website_div{
+		grid-column: 1/4;
+		grid-row: 4/5;
+		background-color: transparent;
+	}
+
+	.Previews{
+		justify-items: center;
+		align-items:flex-start;
+		grid-column: 2/3;
+		grid-row: 3/4;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-rows: 1fr;
+		grid-gap: 0em 1em;
+		margin-left: 0em;
+		
+	}
+	#minpic_1{
+		grid-column: 1/2;
+		grid-row: 1/2;
+	}
+	#minpic_2{
+		grid-column: 2/3;
+		grid-row: 1/2;
+	}
+	#minpic_3{
+		grid-column: 3/4;
+		grid-row: 1/2;
+	}
+	
+	#search{
+		max-width: 5em;
+	}
+
+	
+}
+
+@media screen and (max-width:767px){			/* Version der Seite: Smartphone*/ 
+												/* wenn die Anzeigebreite 1000px unterschreitet wird die Seite */
+	nav{										/* mit den folgenden Eigenschaften überschrieben: */
+		display: grid;
+		grid-template-columns: 1fr 18em 1fr;
+		grid-template-rows: 1fr;
+	}
+	.search_bar{
+		grid-column: 2/3;						/* in der Handyversion wird die Searchbar in die Mitte der Navbar gelegt */
+		grid-row: 1/2;
+		margin-left: 1em;
+	}
+	#searchdiv{
+		opacity: 0%;
+		display: none;
+	}
+	#search{									
+		width: 16em;
+		padding: 0.5em 1em;
+		background-color: white;
+		border: solid 1px black;
+		border-radius: 14px;
+		transition:0.8s;
+		max-width: 16em;
+	}
+	
+	#search:focus{
+		border-radius: 7px;
+	}
+	
+	nav ul{
+		display: none;
+		grid-column: 3/4;
+	}
+	
+	#menu_nav_sp{					/* in der Navbar ist nicht mehr genug Platz für alle Objekte und deswegen werden die ursprünglichen*/
+		grid-column: 3/4;			/* Nav-Elemente ausgeblendet und auf der rechten Seite mit diesem Objekt ersetzt */
+		grid-row: 1/2;
+		display: inline;
+		opacity: 100%;
+		color: white;
+		background-color:black;
+		border: 2px solid white;
+		margin-right: auto;
+		margin-left: auto;
+		padding-top: 1em;
+		
+	}
+	
+	
+	main{
+		display: grid;
+		grid-template-columns: 0.5fr 1fr 0.5fr;
+		grid-template-rows: 1fr 1fr 200px 1fr;
+		justify-content: center;
+		align-content: center;
+	}
+	
+	.description_grid{
+		grid-column: 2/3;
+		grid-row: 1/2;
+		display: grid;
+		grid-template-columns: 1fr 5fr 2fr;
+		grid-template-rows: 0.5fr 5fr;
+		
+	}
+	
+	.description{
+		grid-column: 1/4;
+		grid-row: 2/3;
+		border: solid 1px black;
+		border-bottom: 3px solid black;
+	}
+	
+	#Produktbild{
+		grid-column: 2/3;
+		grid-row: 2/3;
+		margin-top: 2em;
+		margin-left: 0em;
+	}
+	
+	#lower_website_div{
+		grid-column: 1/4;
+		grid-row: 4/5;
+		background-color: transparent;
+	}
+
+	.Previews{
+		justify-items: center;
+		align-items:flex-start;
+		grid-column: 2/3;
+		grid-row: 3/4;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-rows: 1fr;
+		grid-gap: 0em 1em;
+		
+	}
+	#minpic_1{
+		grid-column: 1/2;
+		grid-row: 1/2;
+	}
+	#minpic_2{
+		grid-column: 2/3;
+		grid-row: 1/2;
+	}
+	#minpic_3{
+		grid-column: 3/4;
+		grid-row: 1/2;
+	}
+	
+	
+	
+	
+	
+}
+

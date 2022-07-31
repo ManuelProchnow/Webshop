@@ -1,0 +1,214 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>weirdplan.io</title>
+<link href="weirdplan.shopseite.css" rel="stylesheet">
+	
+	<!-- FONTS:-->
+	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Source+Code+Pro:wght@200&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+	<link rel="icon" type="image/x-icon" href="icon.png">
+</head>
+
+<body>
+	<nav>
+		<h1><a id="titel" href="index.html">weirdplan.io</a></h1>
+		
+		<ul>																<!-- die Elemente innerhalb der Navbar -->
+		<li> <a id="link_startseite" href="index.html"> main page </a> </li>
+			<li > <a id="link_weirder_stuff" href="#" aria-haspopup="true">weird stuff</a> 	
+			<ul class="dropdown" aria-label="subenu">
+			
+				<li><a href="#"> female </a> </li>				<!-- das Dropdown Menue unter "weirder stuff" -->
+				<li><a href="#"> male </a> </li>
+				<li><a href="#"> children </a> </li>
+				<li><a href="#"> accessoires </a> </li>
+				<li><a href="#"> gift codes </a> </li>
+				
+			</ul>
+			</li>
+			
+			<li> <a id="link_einkaufswagen" href="#"> shopping cart </a> 
+			
+			</li>
+			
+		</ul>
+		
+			<div class="search_bar">
+				<input type="text" id="search" placeholder="search...">		<!-- unsere Searchbar; "search..." steht als Platzhalter im Element -->
+  				<div id="searchdiv"></div>									<!-- der Button neben der Searchbar -->
+			</div>
+			<div id="menu_nav_sp">dropdown</div>							<!-- bei Smartphone-Ansicht werden die NAV-Elemente zusammengefasst 
+																				(nur optisch/nicht funktionell) -->
+
+	</nav>
+	
+	<main>
+			<img id="Produktbild" src="product_pic3.1.jpg" alt="productpicture"> 						<!-- Hauptproduktbild -->
+		
+		<div class="Previews">
+			<img id="minpic_1" src="product_pic3.1.jpg" alt="productpicture">	<!-- die Previews für die Produktbilder -->
+			<img id="minpic_2" src="product_pic3.2.jpg" alt="productpicture">
+			<img id="minpic_3" src="product_pic3.3.jpg" alt="productpicture">
+		</div>
+		
+		<script>																	// Wenn ein auf ein kleines Bild angeklickt wird, wird das Bild darin
+			function setProduktbild(minpicId){										// durch das große Bild ersetzt
+				let gross = document.getElementById("Produktbild");
+				let klein = document.getElementById(minpicId);
+				gross.src = klein.src;
+			}
+			
+			document.getElementById("minpic_1").onclick = function () {
+				setProduktbild("minpic_1");
+			} 
+			
+			document.getElementById("minpic_2").onclick = function () {
+				setProduktbild("minpic_2");
+			}
+			
+			document.getElementById("minpic_3").onclick = function () {
+				setProduktbild("minpic_3");
+			}
+				
+		</script>
+		
+		<div class="description_grid">
+			<div class="description">											<!-- Beschreibung des Produkts -->
+				<h1> 2-layer baggy t-shirt </h1>
+				<a id="Produktart" href="#">2-layer t-shirt</a> 
+				<p>With this oversized 2-layered t-shirt you will feel free. It is very comfy and has very much freedom in movement.</p>
+				<p id="größe"><b>Size:</b></p>
+				<select id="Kleidergröße" name="Kleidergröße">
+					<option selected disabled hidden>choose size</option>		<!-- wird angezeigt, bevor man eine Größe auswählt; Placeholder -->
+					<option>XS</option>
+					<option>S</option>
+					<option>M</option>
+					<option>L</option>
+					<option>XL</option>
+				</select>
+				<br/>
+				<div class="Farbe">						<!-- die Punkte um die Farbe auszuwählen -->
+					<p id="Farbe"><b>Color:</b></p>
+					<div id="Farbe_weiß"></div>
+					<div id="Farbe_schwarz"></div>
+					<div id="Farbe_dimgray"></div>
+					<div id="Farbe_darkred"></div>
+				</div>
+				<script>																						// wenn man auf ein Element klickt, wird die eigene
+				document.getElementById("Farbe_weiß").onclick = function () {									// border fett, und die border der anderen Elemente
+					document.getElementById("Farbe_weiß").setAttribute("style","border: solid 2px black")		// werden zurückgesetzt
+					document.getElementById("Farbe_schwarz").setAttribute("style", "border: solid 1px black")
+					document.getElementById("Farbe_dimgray").setAttribute("style", "border: solid 1px black")
+					document.getElementById("Farbe_darkred").setAttribute("style", "border: solid 1px black")
+				}
+				
+				document.getElementById("Farbe_schwarz").onclick = function () {
+					document.getElementById("Farbe_schwarz").setAttribute("style","border: solid 2px black")
+					document.getElementById("Farbe_weiß").setAttribute("style", "border: solid 1px black")
+					document.getElementById("Farbe_dimgray").setAttribute("style", "border: solid 1px black")
+					document.getElementById("Farbe_darkred").setAttribute("style", "border: solid 1px black")
+			
+				}
+				
+				document.getElementById("Farbe_dimgray").onclick = function () {
+					document.getElementById("Farbe_dimgray").setAttribute("style","border: solid 2px black")
+					document.getElementById("Farbe_weiß").setAttribute("style", "border: solid 1px black")
+					document.getElementById("Farbe_schwarz").setAttribute("style", "border: solid 1px black")
+					document.getElementById("Farbe_darkred").setAttribute("style", "border: solid 1px black")
+				}
+				
+				document.getElementById("Farbe_darkred").onclick = function () {
+					document.getElementById("Farbe_darkred").setAttribute("style","border: solid 2px black")
+					document.getElementById("Farbe_weiß").setAttribute("style", "border: solid 1px black")
+					document.getElementById("Farbe_schwarz").setAttribute("style", "border: solid 1px black")
+					document.getElementById("Farbe_dimgray").setAttribute("style", "border: solid 1px black")
+				}
+				
+				</script>
+				<br/>
+				<div id="quantity_div">
+					<p id="anzahl"><b>Quantity:</b></p>												<!-- die Selection für die Stückzahl des Produkts -->
+					<button type="button" id="reduce_quant">-</button>
+					<input id="value_quant" data-min="1" data-max="0" type="number" value="1">
+					<button type="button" id="add_quant">+</button>
+				</div>
+				<br/>
+				<div><input id="prize" readonly="true" value="19,99€"></div>						<!-- der Preis des Produkts -->
+				<br/>
+				<div id="Kaufdiv"><a id="Kaufbutton" href="#"><strong>buy</strong></a></div>							<!-- Kaufbutton -->
+				
+				
+			</div>
+		</div>
+		<div id="lower_website_div">											<!-- der untere Part der Website beinhaltet Tags für das aufgerufende Produkt -->
+			<div id="description_low">
+			<ul id="description_list">
+			<li class="list">80% cotton.</li>
+			<li class="list">eco-friendly.</li>
+			<li class="list">0% footprint guaranteed.</li>
+			<li class="list">article nr.: 5375729</li>
+			</ul></div>
+		<!--<div id="other_products">
+			
+			</div>-->
+		</div>
+	</main>
+	
+		<script>
+			function updatePrize(quantity){
+				if(!quantity) { //Wenn quanity nicht vorhanden ist, soll als default mit 1 als quantity gerechnet werden
+					quantity = 1;
+				}
+				const defaultPrize = 19.99;
+				let newPrize = defaultPrize * quantity;
+				const prizeElement = document.getElementById("prize");
+				prizeElement.value = newPrize.toFixed(2) + "€";				// der Preis wird auf zwei Nachkommastellen gerundet
+				
+			}
+			
+			document.getElementById("value_quant").oninput = function(){			// wenn man die Anzahl per Hand eingibt, wird der Preis direkt aktualisiert
+				const valueQuantElement = document.getElementById("value_quant");
+				let quantity = parseInt(valueQuantElement.value);
+				updatePrize(quantity);
+			}
+			
+			
+			document.getElementById("reduce_quant").onclick = function(){
+				const valueQuantElement = document.getElementById("value_quant"); 
+				let quantity = parseInt(valueQuantElement.value);
+				
+				if(!quantity) { //Wenn quanity nicht vorhanden ist, soll als default mit 1 als quantity gerechnet werden
+					quantity = 1;
+				}
+				
+				if (quantity > 1) {
+					let newQuantity = quantity - 1;				// wenn die Anzahl größer als 1 ist und man auf "reduce_quant" klickt, wird von der aktuellen
+					valueQuantElement.value = newQuantity;		// Quantity 1 abgezogen und als neue Quantity angezeigt
+					updatePrize(newQuantity);
+				}
+			}
+			
+			document.getElementById("add_quant").onclick = function(){
+				const valueQuantElement = document.getElementById("value_quant");
+				let oldQuantity = parseInt(valueQuantElement.value);
+				if(!oldQuantity) { //Wenn quanity nicht vorhanden ist, soll als default mit 1 als quantity gerechnet werden
+					oldQuantity = 1;
+				}
+				let newQuantity = oldQuantity + 1;
+				valueQuantElement.value = newQuantity;			// wenn man auf "add_quant" klickt, dann wird zur aktuellen Quantity 1 hinzugefügt
+				updatePrize(newQuantity);						// und als neue Quantity angezeigt
+			}
+			
+		
+		</script>
+	
+</body>
+	<footer>
+		<a class="footer_content" href="#">Impressum</a>
+		<a class="footer_content" href="#">About Us</a>
+		<a class="footer_content" href="#">Copyright</a>
+	</footer>
+</html>
